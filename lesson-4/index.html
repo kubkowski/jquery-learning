@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="day.css">
+	<style type="text/css">	
+	</style>
+</head>
+<body>
+
+<h1>My Website</h1>
+
+<button data-file="day" disabled="disabled">Day</button>
+<button data-file="night">Night</button>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+(function() {
+	var link = $('link');
+	$('button').on('click', function(){
+		var $this = $(this),
+				stylesheet = $this.data('file');
+		link.attr('href', stylesheet + '.css');		
+		
+		$this
+			.siblings('button')
+				.removeAttr('disabled')
+				.end()
+			.attr('disabled', 'disabled');
+	});
+})();
+
+</script>
+
+</body>
+</html>

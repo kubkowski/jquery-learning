@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery Events</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<dl>
+	<dt>What are your hours?</dt>
+	<dd>We're open 24/7.</dd>
+	<dt>What are your hours?</dt>
+	<dd>We're open 24/7.</dd>
+	<dt>What are your hours?</dt>
+	<dd>We're open 24/7.</dd>
+	<dt>What are your hours?</dt>
+	<dd>We're open 24/7.</dd>
+	<dt>What are your hours?</dt>
+	<dd>We're open 24/7.</dd>
+</dl>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+(function() {
+	$('dd').filter(':nth-child(n+3)').addClass('hide');
+	$('dl').on('mouseenter','dt', function() {
+		var $next = $(this).next();
+		$next
+			.slideDown(200)
+			.siblings('dd')
+			.slideUp(200);
+	});
+
+})();
+</script>
+
+</body>
+</html>
