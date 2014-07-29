@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+<div class="container">
+<h2>Click me</h2>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+(function() {
+	
+	$('h2').on('click', function () {
+		console.log('clicked');
+		$(this).clone(true).appendTo('.container');
+	});
+
+})();
+
+</script>
+
+</body>
+</html>

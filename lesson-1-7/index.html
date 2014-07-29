@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	article {
+		width: 600px;
+		margin: auto;
+	}
+
+	blockquote.co {
+		float: right;
+		background: #e3e3e3;
+		font-size: 1.5em;
+		width: 35%;
+		text-align: center;
+	}
+	</style>
+
+</head>
+<body>
+
+<article>
+<h1>My awesome post</h1>
+	<p>
+		Lorem ipsum dolor sit amet enim. Etiam ullamcorper. <span class="co">Suspendisse a pellentesque dui, non felis.</span> Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor.
+	</p>
+	<p>
+		<span class="co">Pellentesque facilisis. Nulla imperdiet sit amet magna.</span> Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus.
+	</p>
+</article>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+(function() {
+	
+	var co = $('span.co').each(function() {
+		$this = $(this);
+		$('<blockquote></blockquote>', {
+			text: $this.text(),
+			class: 'co'
+		}).prependTo($this.closest('p'));
+	});
+
+})();
+
+</script>
+
+</body>
+</html>
