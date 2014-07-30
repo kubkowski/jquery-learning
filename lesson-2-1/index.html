@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	body {
+		width: 600px;
+		margin: auto;
+		font-family: sans-serif;
+	}
+
+	#contact {
+		background: #e3e3e3;
+		padding: 1em 2em;
+		position: relative;
+	}
+
+	.js #contact {
+		position: absolute;
+		top: 0;
+		width: inherit;
+		display: none;
+	}
+
+	#contact h2 { margin-top: 0;}
+
+	#contact ul { padding: 0;}
+
+	#contact li { 
+		list-style-type: none;
+		margin-bottom: 1em;
+	}
+
+	.close {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		font-weight: bold;
+		font-family: sans-serif;
+		cursor: pointer;
+	}
+	</style>
+
+</head>
+<body>
+
+<article>
+<h1>My awesome post</h1>
+	<p>
+		Lorem ipsum dolor sit amet enim. Etiam ullamcorper. <span class="co">Suspendisse a pellentesque dui, non felis.</span> Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor.
+	</p>
+	<p>
+		<span class="co">Pellentesque facilisis. Nulla imperdiet sit amet magna.</span> Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus.
+	</p>
+</article>
+<div id="contact">
+	<form id="#">
+		<h2>Contact me</h2>
+		<ul>
+			<li>
+				<label for="name">Name: </label><br />
+				<input name="name" id="name">
+			</li>
+			<li>
+				<label for="email">E-mail: </label><br />
+				<input name="email" id="email">
+			</li>
+			<li>
+				<label for="comments">What's up?</label><br />
+				<textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+			</li>
+			<li>
+				<input type="submit" value="Submit">
+			</li>
+		</ul>
+	</form>
+</div>
+
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+(function() {
+	$('html').addClass('js');
+	
+	var contactForm ={
+		container: $('div#contact'),
+
+		config: {
+			effect: 'slideToggle',
+			time: 300
+		},
+
+		init: function(config) {
+			$.extend(this.config, config);
+			$('<button></button>', {
+				text: 'Contact me',				
+			})
+				.insertAfter('article')
+				.on('click', this.show);
+		},
+		show: function() {
+			var cf = contactForm,
+					container = cf.container,
+					config = cf.config;
+			if (container.is(':hidden')){
+				cf.close.call(container);
+				container[config.effect](config.time);
+			}
+		},
+		close: function() {
+			var $this = $(this);
+			if ($this.find('span.close').length) return;
+			$('<span class="close">X</span>')
+				.prependTo('h2')
+				.on('click', function() {
+					$this[contactForm.config.effect](contactForm.config.time);
+				});
+		},
+	};
+
+	contactForm.init({
+		effect: 'fadeToggle'
+	});
+
+
+})();
+	
+
+
+</script>
+
+</body>
+</html>
