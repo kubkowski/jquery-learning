@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	
+	</style>
+
+</head>
+<body>
+
+<h1>Reveal</h1>
+<div class="content">
+	<p>
+		Lorem ipsum dolor sit amet enim. Etiam ullamcorper. <span class="co">Suspendisse a pellentesque dui, non felis.</span> Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor.
+	</p>
+	<p>
+		<span class="co">Pellentesque facilisis. Nulla imperdiet sit amet magna.</span> Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus.
+	</p>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+$('div.content').hide();
+$.fx.speeds._default = 500;
+$.fx.speeds.slowest = 2000;
+
+$('h1').on('click', function(){
+	$('div.content').slideDown('slowest');
+});
+
+
+
+</script>
+
+</body>
+</html>
