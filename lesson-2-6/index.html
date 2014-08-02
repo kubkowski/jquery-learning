@@ -21,7 +21,7 @@
 	</p>
 </div>
 
-<p><button>Center</button></p>
+<p><button>FadeSlideToggle</button></p>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -29,11 +29,20 @@
 
 (function() {
 
-	function fadeSlideToggle(){
-		console.log('clicked')
+	var box = $('div.box');
+
+	jQuery.fn.fadeSlideToggle = function (speed, easing, callback) {
+		$this = $(this);
+		console.log($this);
+		return $this.animate({
+			'height': 'toggle',
+			'opacity': 'toggle'
+		}, speed, easing, callback);
 	}
 
-	$('button').on('click', fadeSlideToggle)
+	$('button').on('click', function() {
+		box.fadeSlideToggle(2000);
+	});
 	
 })();
 
