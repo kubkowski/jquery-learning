@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+<script type="template" id="blogTemplate">
+
+	<h2> {{title}} </h2>
+	<img src={{thumbnail}} alt={{title}}>
+
+</script>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+(function() {
+
+	var content = [{
+			title: 'My awesome blogpost',
+			thumbnail: 'https://cms-assets.tutsplus.com/uploads/users/41/posts/20999/preview_image/preview-image@2x.jpg'
+		},
+		{
+			title: 'My second awesome blogpost',
+			thumbnail: 'https://cms-assets.tutsplus.com/uploads/users/45/posts/21771/preview_image/nodejs-retina-preview.png'
+		},
+		{
+			title: 'My third awesome blogpost',
+			thumbnail: 'https://cms-assets.tutsplus.com/uploads/users/362/posts/21358/preview_image/pic1.png'
+		}
+
+	];
+
+	template = $.trim($('#blogTemplate').html());
+	frag = '';
+
+	$.each(content, function(index, obj){
+		frag += template
+			.replace( /{{title}}/ig, obj.title )
+			.replace( /{{thumbnail}}/ig, obj.thumbnail );
+		
+	});
+
+	$(document.body).append(frag);
+
+
+})();
+
+</script>
+
+</body>
+</html>

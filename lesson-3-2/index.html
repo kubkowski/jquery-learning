@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+<ul class="tweets">
+	<script id="template" type="text/x-handlebars-template">
+		{{#each this}}
+		<li>
+			<h2>{{fullName author}} {{#if age}}- <strong>{{age}}</strong>{{/if}}</h2>
+			<p>{{{tweet}}}</p>
+		</li>
+		{{/each}}
+	</script>
+</ul>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="handlebars-v1.3.0.js"></script>
+
+<script type="text/javascript">
+
+(function() {
+	
+	var Twitter = {
+		init: function () {
+			this.url = 'http://headers.jsontest.com/'
+		},
+		fetch: function () {
+			
+		}
+	};
+
+
+})();
+
+</script>
+
+</body>
+</html>
