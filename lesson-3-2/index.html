@@ -24,14 +24,25 @@
 
 (function() {
 	
-	var Twitter = {
-		init: function () {
-			this.url = 'http://headers.jsontest.com/'
-		},
-		fetch: function () {
-			
-		}
-	};
+	var data = [{
+		author: {first: 'Jeffrey', last: 'Way'},
+		tweet: '<strong>30 days</strong> to learn jQuery',
+		age: 27
+	},
+	{
+		author: {first: 'Stephen', last: 'King'},
+		tweet: 'The second tweet'
+	}];
+
+	Handlebars.registerHelper('fullName', function(author) {
+		return author.first + ' ' + author.last;
+	});
+	var template = Handlebars.compile($('#template').html());
+	var temp = template(data);
+	$('ul.tweets').append(temp);
+
+
+})();
 
 
 })();

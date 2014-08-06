@@ -3,15 +3,29 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
+	<style type="text/css">
+	body {
+		width: 600px;
+		margin: auto;
+	}
+	ul {
+		list-style: none;
+		padding-bottom: 1em;
+	}
+	a {
+		text-decoration: none;
+		color: #333;
+	}
+	</style>
 </head>
 <body>
 
-<ul class="tweets">
-	<script id="template" type="text/x-handlebars-template">
+<ul class="repos">
+	<script id="repos-template" type="text/x-handlebars-template">
 		{{#each this}}
-		<li>
-			<h2>{{fullName author}} {{#if age}}- <strong>{{age}}</strong>{{/if}}</h2>
-			<p>{{{tweet}}}</p>
+	  <li>
+			<strong><a href="{{url}}">{{name}} - {{id}}</a></strong>
+			<p>{{author}}</p>
 		</li>
 		{{/each}}
 	</script>
@@ -24,23 +38,40 @@
 
 (function() {
 	
-	var data = [{
-		author: {first: 'Jeffrey', last: 'Way'},
-		tweet: '<strong>30 days</strong> to learn jQuery',
-		age: 27
-	},
-	{
-		author: {first: 'Stephen', last: 'King'},
-		tweet: 'The second tweet'
-	}];
+	var Github = {
+		init: function(config) {
+			this.url = 'https://api.github.com/users/' + config.query +'/repos';
+			this.template = config.template;
+			this.container = config.container;
+			this.fetch();
+		},
 
-	Handlebars.registerHelper('fullName', function(author) {
-		return author.first + ' ' + author.last;
+		attachTemplate: function() {
+			var template = Handlebars.compile(this.template);
+			this.container.append(template(this.repos));
+		},
+
+		fetch: function() {
+			var self = this;
+			$.getJSON (this.url, function (data) {				
+				self.repos = $.map(data, function(repo){
+					return {
+						id: repo.id,
+						name: repo.name,
+						author: repo.owner.login,
+						url: repo.html_url
+					};
+				});
+				self.attachTemplate();
+			});	
+		}
+	}
+
+	Github.init({
+		template: $('#repos-template').html(),
+		container: $('ul.repos'),
+		query: 'kubkowski'
 	});
-	var template = Handlebars.compile($('#template').html());
-	var temp = template(data);
-	$('ul.tweets').append(temp);
-
 
 })();
 
