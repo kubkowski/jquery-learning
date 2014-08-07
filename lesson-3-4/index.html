@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+(function() {
+	
+	var arr = [1,2,3,4,5,6,7,8,9,10]; 
+
+	var filtredArray = $.grep(arr, function(val, index) {
+		return val > 5;
+	});
+	console.log (filtredArray);
+
+	var array2 = [
+			{
+				first: "Jeffrey",
+				last: "Way"
+			},
+			{
+				first: "Allison",
+				last: "Way"
+			},
+			{
+				first: "Jeffrey",
+				last: "Smith"
+			},
+			{
+				first: "John",
+				last: "Doe"
+			}
+	];
+
+	var filtredArray2 = $.grep(array2, function(val, index) {
+		return val.last === "Way";
+	});
+
+	console.log(filtredArray2);
+
+
+})();
+
+</script>
+
+</body>
+</html>

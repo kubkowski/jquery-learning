@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<h1>Hi there</h1>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+(function($) {
+
+	var o = $ ({});
+
+	$.each({
+		trigger: 'publish',
+		on: 'subscribe',
+		off: 'unsubscribe'
+	}, function(key, val) {
+		jQuery[val] = function(){
+			o[key].apply(o, arguments);
+		}
+	})
+	
+})(jQuery);
+
+$.getJSON('https://api.github.com/users/kubkowski/repos', function (results) {
+	$.map(results, function(repo) {
+		return repo;
+	});
+	$.publish('github/results', results);
+});
+
+
+$.subscribe('github/results', function(e, results){
+	console.log(results);
+	$('body').html(
+		results.id
+	);
+});
+
+
+//$(document).on('github/results', function(e, data){
+//	console.log(data);
+//});
+
+//$.getJSON('https://api.github.com/users/kubkowski/repos', function (data) {
+//	$(document).trigger('github/results', data);
+//});
+
+</script>
+
+</body>
+</html>
