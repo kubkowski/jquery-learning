@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+
+<div class="wrap">
+	<a href="about.html">About me</a>
+	<br />
+	<a href="contact.html">Contact me</a>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+
+(function($) {
+	var wrap = $('div.wrap');
+
+	$('a').on('click', function(e){
+		var href = $(this).attr("href");
+		wrap.load(href + ' .container');
+		e.preventDefault();
+	});
+
+})(jQuery);
+
+
+</script>
+
+</body>
+</html>
