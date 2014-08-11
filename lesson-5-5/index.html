@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	.box {
+		width: 200px;
+		height: 200px;
+		background: green;
+		display: inline-block;
+		margin-right: 3em;
+	}
+	</style>
+</head>
+<body>
+
+<div class="box">My box</div>
+<div class="box">My box</div>
+<div class="box">My box</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+(function($) {
+
+var getUser = function(search){
+	return $.ajax({
+		url: 'https://github.com/' + search + '.json',
+		dataType: 'jsonp',
+	}).promise();
+};
+
+$.when(getUser('kubkowski'), getUser('kubkowski')).done(function(results1, results2){
+	console.log(results1);
+	console.log(results2);
+});
+
+
+//$('div.box').each(function(i){
+//	$(this).delay(1000 * i++ ).fadeOut(1000);
+//}).promise().done(function(){
+//	console.log('done')
+//});
+
+
+
+
+//$.searchGithub = function (search){
+//	return $.ajax({
+//		url: 'https://github.com/' + search + '.json',
+//		dataType: 'jsonp',
+//	}).promise();
+//};
+//
+//var outer = $.searchGithub('kubkowski');
+//
+//outer.then(function(results){
+//	console.log(results);
+//});
+//
+//outer.then(function(){
+//	console.log('done!');
+//});
+	
+})(jQuery);
+
+
+
+</script>
+
+</body>
+</html>

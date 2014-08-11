@@ -46,7 +46,7 @@ var Actors = {
 		e.preventDefault();
 	},
 	closeOverlay: function(){
-		this.config.actorInfo.fadeOut(300);
+		this.config.actorInfo.slideUp(300);
 	}
 }
 
