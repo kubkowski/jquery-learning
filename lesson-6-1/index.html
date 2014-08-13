@@ -20,9 +20,18 @@
 (function($) {
 
 $('div.github').searchGithub({
-	search: ''
+	search: 'kubkowski',
+	limit: 5, 
+	onComplete: function(){
+		console.log(arguments);
+	},
+	refresh: 4000,
+	transition: 'fadeToggle'
 });
 	
+var instance = $.data('div.github'[0], searchGithub);
+// instance.url = 'http://newurl.com';
+
 })(jQuery);
 
 
